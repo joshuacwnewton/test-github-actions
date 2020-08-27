@@ -23,4 +23,5 @@ jobs:
          # Default: ${{ github.repository }}
           repository: "${{ github.repository }}.wiki"    
       - uses: actions/setup-node@v1
-      - run: npm install github-wiki-sidebar 
+      - run: npm install github-wiki-sidebar -g
+      - run: github-wiki-sidebar --silent --git-push
