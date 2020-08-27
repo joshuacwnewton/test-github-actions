@@ -21,6 +21,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
          # Default: ${{ github.repository }}
-          repository: "${{ github.repository }}-wiki"    
+          repository: "${{ github.repository }}.wiki"    
       - uses: actions/setup-node@v1
       - run: npm install github-wiki-sidebar 
