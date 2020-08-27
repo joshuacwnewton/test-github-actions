@@ -24,4 +24,6 @@ jobs:
           repository: "${{ github.repository }}.wiki"    
       - uses: actions/setup-node@v1
       - run: npm install github-wiki-sidebar -g
+      - run: git config --global user.name "joshuacwnewton"
+      - run: git config --global user.email "joshuacwnewton@gmail.com"
       - run: github-wiki-sidebar --silent --git-push
