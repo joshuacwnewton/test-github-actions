@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install github-wiki-sidebar -g
       
-      - run: git config --global user.name "joshuacwnewton"
-      - run: git config --global user.email "joshuacwnewton@gmail.com"
+      - run: git config --global user.name "github-actions"
+      - run: git config --global user.email "github-actions@github.com"
         
       - run: github-wiki-sidebar --silent --git-push
