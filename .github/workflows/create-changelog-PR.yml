@@ -25,4 +25,4 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        commit-message: "Update ${{ github.event.inputs.fname_changelog }} for ${{ $MILESTONE }} release"
+        commit-message: "Update ${{ github.event.inputs.fname_changelog }} for $MILESTONE release"
