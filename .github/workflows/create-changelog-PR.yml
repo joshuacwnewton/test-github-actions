@@ -21,6 +21,7 @@ jobs:
       run: |
       export MILESTONE=`changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }} | head -1 | cut -d' ' -f3 | cut -d',' -f1`
       echo "MILESTONE=$MILESTONE" >> $GITHUB_ENV
+      rm "${{ github.event.inputs.fname_changelog }}.bak"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
