@@ -21,7 +21,7 @@ jobs:
       run: pip install changelog-neuropoly
     - name: Generate changelog
       run: |
-        echo -e "MILESTONE=${changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }} | grep 'INFO Milestone' | cut -d' ' -f3 | cut -d',' -f1}" >> ${GITHUB_ENV}
+        echo -e "MILESTONE=${changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }} | grep 'INFO Milestone' | head -1 | cut -d' ' -f3 | cut -d',' -f1}" >> ${GITHUB_ENV}
         rm "${{ github.event.inputs.fname_changelog }}.bak"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
