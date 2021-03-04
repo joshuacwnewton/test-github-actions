@@ -1,3 +1,5 @@
+name: "Create PR with updated CHANGES.md"
+
 on:
   workflow_dispatch:
     inputs:
