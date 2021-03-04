@@ -18,6 +18,10 @@ jobs:
     - name: Install changelog
       run: pip install changelog-neuropoly
     - name: Generate changelog
-      run: changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }}
+      run: |
+      export MILESTONE=`changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }} | head -1 | cut -d' ' -f3 | cut -d',' -f1`
+      echo "MILESTONE=$MILESTONE" >> $GITHUB_ENV
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: "Update ${{ github.event.inputs.fname_changelog }} for ${{ $MILESTONE }} release"
