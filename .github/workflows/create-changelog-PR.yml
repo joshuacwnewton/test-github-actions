@@ -31,3 +31,8 @@ jobs:
         title: "Update ${{ github.event.inputs.fname_changelog }} for ${{ env.MILESTONE }} release"
         milestone: "${{ env.MILESTONE }}"
         body: "Automated step carried out as a part of [Creating a new release](https://github.com/neuropoly/spinalcordtoolbox/wiki/Misc%3A-Creating-a-new-release) checklist."
+        delete-branch: true
+    - name: Check outputs
+      run: |
+        echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+        echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
