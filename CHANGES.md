@@ -1,5 +1,25 @@
 # Changelog
 
+## 5.2.1 (2021-03-07)
+[View detailed changelog](https://github.com/neuropoly/spinalcordtoolbox/compare/5.2.0...5.2.1)
+
+**CI**
+
+ - Use 'extend-ignore' in flake8 config to preserve defaults.  [View pull request](https://github.com/neuropoly/spinalcordtoolbox/pull/3255)
+
+**BUG**
+
+ - **sct_label_vertebrae:** Handle 'label_discs' case where SC segmentation has holes/discontinuities.  [View pull request](https://github.com/neuropoly/spinalcordtoolbox/pull/3260)
+ - **sct_dice_coefficient:** Uniquely distinguish filenames for tmp files to prevent overwriting.  [View pull request](https://github.com/neuropoly/spinalcordtoolbox/pull/3258)
+
+**DOCUMENTATION**
+
+ - Add reference Azzarito et al..  [View pull request](https://github.com/neuropoly/spinalcordtoolbox/pull/3259)
+
+**GIT/GITHUB**
+
+ - Add checklist item to pull request template for 'Milestone' label.  [View pull request](https://github.com/neuropoly/spinalcordtoolbox/pull/3263)
+
 ## 5.2.0 (2021-02-24)
 [View detailed changelog](https://github.com/neuropoly/spinalcordtoolbox/compare/5.1.0...5.2.0)
 
