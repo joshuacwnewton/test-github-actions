@@ -15,16 +15,21 @@ jobs:
   create-changelog-PR:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
+    - name: Checkout 'neuropoly/spinalcordtoolbox'
+      uses: actions/checkout@v2
+    - name: Checkout 'neuropoly/changelog'
+      uses: actions/checkout@v2
+      with:
+        repository: neuropoly/changelog
+        path: changelog
+        ref: jn/15-milestone-argument
+    - name: Set up Python (to install 'neuropoly/changelog')
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
     - name: Install changelog
       run: |
-          git clone --depth 1 --single-branch --branch jn/15-milestone-argument https://github.com/neuropoly/changelog.git
-          cd changelog
-          pip install .
+        pip install ./changelog
     - name: Generate changelog
       run: |
         changelog neuropoly/spinalcordtoolbox --update --name ${{ github.event.inputs.fname_changelog }} --milestone ${{ github.event.inputs.milestone_title }}
