@@ -24,7 +24,6 @@ jobs:
       with:
         repository: neuropoly/changelog
         path: changelog
-        ref: jn/15-milestone-argument
     - name: Install 'changelog'
       run: |
         pip install ./changelog
