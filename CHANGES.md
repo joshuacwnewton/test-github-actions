@@ -1,5 +1,26 @@
 # Changelog
 
+## 5.3.1 (2021-05-07)
+[View detailed changelog](https://github.com/spinalcordtoolbox/spinalcordtoolbox/compare/5.3.0...5.3.1)
+
+**BUG**
+
+ - **sct_dmri_moco:** Fix `-bvals` filepath handling and update bvals argparse help.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3376)
+ - Make sure TR parameter isn't lost when resampling 4D images.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3370)
+ - **sct_apply_transfo:** Change `sct_apply_transfo -v 0` to match `isct_antsApplyTransform` output.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3368)
+
+**INSTALLATION**
+
+ - Throw error during installation if `$SCT_DIR` contains spaces.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3366)
+
+**DOCUMENTATION**
+
+ - Remove instructions for installing FSLeyes in the SCT conda environment.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3360)
+
+**REFACTORING**
+
+ - Remove generate_path from methods in Image class.  [View pull request](https://github.com/spinalcordtoolbox/spinalcordtoolbox/pull/3371)
+
 ## 5.2.0 (2021-02-24)
 [View detailed changelog](https://github.com/neuropoly/spinalcordtoolbox/compare/5.1.0...5.2.0)
 
