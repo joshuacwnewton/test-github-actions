@@ -23,6 +23,6 @@ jobs:
         echo "PR number = ${{ github.event.pull_request.number }}"
         echo "PR number = ${{ env.PR_NUMBER }}"
     - name: Lint with flake8
-      run: flake8 | lintly --use-checks --fail-on new --exit-zero --no-post-status --commit-sha ${{ github.sha }} --pr ${{ github.event.number }} --log
+      run: flake8 | lintly --use-checks --fail-on new --exit-zero --no-post-status --commit-sha ${{ github.event.pull_request.head.sha }} --pr ${{ github.event.pull_request.number }} --log
       env:
         LINTLY_API_KEY: ${{ secrets.GITHUB_TOKEN }}
