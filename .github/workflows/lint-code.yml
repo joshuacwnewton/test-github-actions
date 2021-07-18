@@ -3,9 +3,6 @@ name: Python Linting
 on:
   pull_request_target:
 
-env:
-  PR_NUMBER: ${{ github.event.pull_request.number }}
-
 jobs:
   lint_job:
     runs-on: ubuntu-latest
@@ -18,10 +15,8 @@ jobs:
     - name: Install dependencies
       run: pip install flake8 lintly==0.5.0
     # Note: flake8 picks up project-wide configuration options from 'setup.cfg' in SCT's root directory
-    - name: view the PR number
-      run: |
-        echo "PR number = ${{ github.event.pull_request.number }}"
-        echo "PR number = ${{ env.PR_NUMBER }}"
+    - name: Echo flake8
+      run: flake8
     - name: Lint with flake8
       run: flake8 | lintly --use-checks --fail-on new --exit-zero --no-post-status --commit-sha ${{ github.event.pull_request.head.sha }} --pr ${{ github.event.pull_request.number }} --log
       env:
