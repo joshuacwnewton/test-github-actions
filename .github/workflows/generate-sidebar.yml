@@ -1,8 +1,9 @@
 name: Update wiki sidebar if page titles have changed
 
 on:
+  workflow_dispatch:
   # See https://docs.github.com/en/actions/reference/events-that-trigger-workflows#gollum
-  gollum
+  gollum:
 
 jobs:
   generate-sidebar:
