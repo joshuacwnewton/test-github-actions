@@ -20,21 +20,28 @@ jobs:
     - name: "Checkout '${{ github.event.repository.name }}'"
       uses: actions/checkout@v2
       with:
-        ref: ${{ env.RELEASE_BRANCH }}
+        fetch-depth: 0
+        ref: ${{ env.MAIN_BRANCH }}
         path: ${{ github.event.repository.name }}
     ##########################################################################
 
-    - name: Checkout spinalcordtoolbox
+    - name: Checkout spinalcordtoolbox (main branch)
       uses: actions/checkout@v2
       with:
         repository: spinalcordtoolbox/spinalcordtoolbox
-        ref: ${{ env.RELEASE_BRANCH }}
+        fetch-depth: 0
+        ref: ${{ env.MAIN_BRANCH }}
         path: spinalcordtoolbox
 
     - name: Install spinalcordtoolbox
       run: |
         cd spinalcordtoolbox
         ./install_sct -iy
+
+    - name: Checkout spinalcordtoolbox (release branch)
+      run: |
+        cd spinalcordtoolbox
+        git checkout ${{ env.RELEASE_BRANCH }}
 
     - name: Update requirements-freeze.txt
       run: |
@@ -51,6 +58,20 @@ jobs:
         cd spinalcordtoolbox
         echo "${{ github.event.inputs.milestone_title }}" > spinalcordtoolbox/version.txt
 
+    - name: Set bot user data for commits
+      run: |
+        cd ${{ github.event.repository.name }}
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions Bot"
+
+    - name: Merge main branch into release branch
+      run: |
+        cd ${{ github.event.repository.name }}
+        git status
+        git checkout ${{ env.RELEASE_BRANCH }}
+        git status
+        git merge --no-ff ${{ env.MAIN_BRANCH }}
+
     ################## SKIP THIS STEP ON SPINALCORDTOOLBOX ###################
     - name: "Copy files to '${{ github.event.repository.name }}' (to test releases)"
       run: |
@@ -63,12 +84,6 @@ jobs:
     - name: Commit and push
       run: |
         cd ${{ github.event.repository.name }}
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Actions Bot"
-        git fetch
-        git checkout ${{ env.MAIN_BRANCH }}
-        git checkout ${{ env.RELEASE_BRANCH }}
-        git merge --no-ff ${{ env.MAIN_BRANCH }}
         git add requirements-freeze.txt
         git commit -m "Update requirements-freeze.txt for ${{ github.event.inputs.milestone_title }}"
         git add spinalcordtoolbox/version.txt
