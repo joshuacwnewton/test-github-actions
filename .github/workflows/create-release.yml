@@ -105,7 +105,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         bodyFile: "${{ github.event.repository.name }}/.github/workflows/release-body.md"
         artifacts: >
-            ["install_sct-${{ github.event.inputs.milestone_title }}_win.bat",
-             "install_sct-${{ github.event.inputs.milestone_title }}_linux.sh",
-             "install_sct-${{ github.event.inputs.milestone_title }}_macos.sh"]
+          "install_sct-${{ github.event.inputs.milestone_title }}_win.bat",
+          "install_sct-${{ github.event.inputs.milestone_title }}_linux.sh",
+          "install_sct-${{ github.event.inputs.milestone_title }}_macos.sh"
         draft: true
