@@ -91,6 +91,12 @@ jobs:
         git push
     ##########################################################################
 
+    - name: Create dummy release scripts
+      run: | 
+        echo "test" > "install_sct-${{ github.event.inputs.milestone_title }}_win.bat"
+        echo "test" > "install_sct-${{ github.event.inputs.milestone_title }}_linux.sh"
+        echo "test" > "install_sct-${{ github.event.inputs.milestone_title }}_macos.sh"
+
     - uses: ncipollo/release-action@v1
       name: Create release
       with:
@@ -98,3 +104,8 @@ jobs:
         tag: ${{ github.event.inputs.milestone_title }}
         token: ${{ secrets.GITHUB_TOKEN }}
         bodyFile: "${{ github.event.repository.name }}/.github/workflows/release-body.md"
+        artifacts: >
+            ["install_sct-${{ github.event.inputs.milestone_title }}_win.bat",
+             "install_sct-${{ github.event.inputs.milestone_title }}_linux.sh",
+             "install_sct-${{ github.event.inputs.milestone_title }}_macos.sh"]
+        draft: true
