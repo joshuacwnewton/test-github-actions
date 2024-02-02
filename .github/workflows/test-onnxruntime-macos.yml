@@ -39,7 +39,7 @@ jobs:
           # conda list
           # pip freeze
           echo $'\nInstall onnxruntime==1.17.0 as pip package'
-          python3 -m pip install --platform macosx_11_0_x86_64 onnxruntime==1.17.0
+          python3 -m pip install --platform macosx_11_0_x86_64 --only-binary:all: onnxruntime==1.17.0
           echo $'\nCheck environment post-onnxruntime install'
           conda list
           pip freeze
