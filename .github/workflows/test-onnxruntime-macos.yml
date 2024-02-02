@@ -25,10 +25,10 @@ jobs:
   
       - name: 'Test steps (combined so that I dont have to conda activate in each step)'
         run: |
-          echo "Activate Python 3.9 conda environment"
-          conda init bash
-          source /Users/runner/.bash_profile
-          conda activate test_env
+          # echo "Activate Python 3.9 conda environment"
+          # conda init bash
+          # source /Users/runner/.bash_profile
+          # conda activate test_env
           echo $'\nCheck environment pre-pip install'
           conda list
           pip freeze
