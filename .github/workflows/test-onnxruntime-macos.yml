@@ -30,12 +30,12 @@ jobs:
   
       - name: 'Install pip from PyPI'
         run: |
-          python3 -m pip install onnxruntime==1.17.0
+          python3 -m pip install -U pip
 
       - name: 'Inspect environment 2'
         run: |
-         conda list
-         pip freeze
+          conda list
+          pip freeze
 
       - name: 'Install onnxruntime==1.17.0 from PyPI'
         run: |
@@ -43,5 +43,5 @@ jobs:
 
       - name: 'Inspect environment 3'
         run: |
-         conda list
-         pip freeze
+          conda list
+          pip freeze
