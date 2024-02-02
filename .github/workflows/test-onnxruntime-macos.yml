@@ -30,7 +30,7 @@ jobs:
           source /Users/runner/.bash_profile
           conda activate test_env
           echo $'\nCheck environment pre-pip install after adding base dependencies'
-          conda install packaging
+          conda install packaging platformdirs certifi
           conda list
           pip freeze
           # echo $'\nInstall pip as pip package'
