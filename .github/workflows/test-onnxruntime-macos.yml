@@ -24,7 +24,7 @@ jobs:
           python-version: 3.9
 
       - name: 'Inspect environment 2/2'
-      - run: |
+        run: |
          conda info
          conda list
          conda config --show-sources
