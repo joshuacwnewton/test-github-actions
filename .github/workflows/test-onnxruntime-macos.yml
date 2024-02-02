@@ -27,11 +27,13 @@ jobs:
         run: |
           echo $'\nTry to determine what pip is detecting the platform to be'
           python3 -c 'import platform; print(platform.platform())'
+          python3 -m pip debug --verbose
           echo $'\nActivate Python 3.11 conda environment'
           conda init bash
           source /Users/runner/.bash_profile
           conda activate test_env
           echo $'\nTry to determine what pip is detecting the platform to be'
           python3 -c 'import platform; print(platform.platform())'
+          python3 -m pip debug --verbose
           echo $'\nInstall onnxruntime==1.17.0 as pip package'
           python3 -m pip install onnxruntime==1.17.0
