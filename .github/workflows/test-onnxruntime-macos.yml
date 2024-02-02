@@ -22,32 +22,23 @@ jobs:
         with:
           activate-environment: test_env
           python-version: 3.9
-
-      - name: 'Inspect environment 1'
-        run: |
-         conda list
-         pip freeze
   
-      - name: 'Install pip from PyPI'
+      - name: 'Test steps (combined so that I dont have to conda activate in each step)'
         run: |
-          which python3
+          echo "Activate Python 3.9 conda environment"
           conda init bash
           source /Users/runner/.bash_profile
           conda activate test_env
-          which python3
-          python3 -m pip install -U pip
-
-      - name: 'Inspect environment 2'
-        run: |
+          echo $'\nCheck environment pre-pip install'
           conda list
           pip freeze
-
-      - name: 'Install onnxruntime==1.17.0 from PyPI'
-        run: |
-          conda activate test_env
+          echo $'\nInstall pip as pip package'
+          python3 -m pip install -U pip
+          echo $'\nCheck environment post-pip install, pre-onnxruntime install'
+          conda list
+          pip freeze
+          echo $'\nInstall onnxruntime==1.17.0 as pip package'
           python3 -m pip install onnxruntime==1.17.0
-
-      - name: 'Inspect environment 3'
-        run: |
+          echo $'\nCheck environment post-onnxruntime install'
           conda list
           pip freeze
