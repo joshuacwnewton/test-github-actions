@@ -32,11 +32,11 @@ jobs:
           echo $'\nCheck environment pre-pip install'
           conda list
           pip freeze
-          echo $'\nInstall pip as pip package'
-          python3 -m pip install -U pip
-          echo $'\nCheck environment post-pip install, pre-onnxruntime install'
-          conda list
-          pip freeze
+          # echo $'\nInstall pip as pip package'
+          # python3 -m pip install -U pip
+          # echo $'\nCheck environment post-pip install, pre-onnxruntime install'
+          # conda list
+          # pip freeze
           echo $'\nInstall onnxruntime==1.17.0 as pip package'
           python3 -m pip install onnxruntime==1.17.0
           echo $'\nCheck environment post-onnxruntime install'
