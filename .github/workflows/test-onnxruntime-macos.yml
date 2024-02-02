@@ -23,22 +23,25 @@ jobs:
           activate-environment: test_env
           python-version: 3.9
 
-      - name: 'Inspect environment 2/2'
+      - name: 'Inspect environment 1'
         run: |
-         conda info
          conda list
-         conda config --show-sources
-         conda config --show
          pip freeze
-
-      - name: 'Setup requirements'
+  
+      - name: 'Install pip from PyPI'
         run: |
           python3 -m pip install onnxruntime==1.17.0
 
-      - name: 'Inspect environment 2/2'
+      - name: 'Inspect environment 2'
         run: |
-          conda info
-          conda list
-          conda config --show-sources
-          conda config --show
-          pip freeze
+         conda list
+         pip freeze
+
+      - name: 'Install onnxruntime==1.17.0 from PyPI'
+        run: |
+          python3 -m pip install onnxruntime==1.17.0
+
+      - name: 'Inspect environment 3'
+        run: |
+         conda list
+         pip freeze
