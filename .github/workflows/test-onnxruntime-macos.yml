@@ -32,6 +32,7 @@ jobs:
         run: |
           which python3
           conda init bash
+          source /Users/runner/.bash_profile
           conda activate test_env
           which python3
           python3 -m pip install -U pip
