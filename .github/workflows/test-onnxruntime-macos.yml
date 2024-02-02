@@ -14,29 +14,29 @@ jobs:
   test:
     runs-on: macos-11
     steps:
-       - uses: actions/checkout@v4
-         with:
-           submodules: true
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
 
-       - uses: conda-incubator/setup-miniconda@v3
-         with:
-           activate-environment: test_env
-           python-version: 3.9
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: test_env
+          python-version: 3.9
 
-       - name: 'Inspect environment 2/2'
-       - run: |
-          conda info
-          conda list
-          conda config --show-sources
-          conda config --show
-          pip freeze
+      - name: 'Inspect environment 2/2'
+      - run: |
+         conda info
+         conda list
+         conda config --show-sources
+         conda config --show
+         pip freeze
 
-       - name: 'Setup requirements'
-         run: |
-           python3 -m pip install onnxruntime==1.17.0
+      - name: 'Setup requirements'
+        run: |
+          python3 -m pip install onnxruntime==1.17.0
 
-       - name: 'Inspect environment 2/2'
-       - run: |
+      - name: 'Inspect environment 2/2'
+        run: |
           conda info
           conda list
           conda config --show-sources
